@@ -16,13 +16,11 @@ public class CarFactoryBean implements FactoryBean<Car> {
 
     @Override
     public Car getObject() throws Exception {
-        // TODO Auto-generated method stub
         return new Car(this.brand);
     }
 
     @Override
     public Class<Car> getObjectType() {
-        // TODO Auto-generated method stub
         return Car.class;
     }
 

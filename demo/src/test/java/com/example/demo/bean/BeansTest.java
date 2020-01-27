@@ -1,19 +1,19 @@
 package com.example.demo.bean;
 
 import com.example.demo.model.HelloWorld;
-import com.example.demo.model.Car;
 import com.example.demo.model.Boss;
 import com.example.demo.model.Person;
 
-import org.springframework.boot.SpringApplication;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
+
 public class BeansTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		HelloWorld helloWorld = (HelloWorld) ac.getBean("helloWorld");
 		helloWorld.sayHello();

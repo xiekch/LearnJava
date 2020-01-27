@@ -1,9 +1,12 @@
 package com.example.demo.aopXml;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AopTest {
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         ClassPathXmlApplicationContext ca = new ClassPathXmlApplicationContext("aopXml.xml");
         Calculator calculator = (Calculator) ca.getBean("calculator");
         Calculator calculator2 = (Calculator) ca.getBean("calculator");
