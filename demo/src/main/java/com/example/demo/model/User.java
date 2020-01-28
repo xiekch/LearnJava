@@ -5,9 +5,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
     private String name;
+    private String password;
 
     public User() {
         this.name = "Tom";
+        this.password = "123456";
     }
 
     /**
@@ -15,6 +17,27 @@ public class User {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
     }
 
     @Override

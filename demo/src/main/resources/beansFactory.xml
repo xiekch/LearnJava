@@ -2,9 +2,8 @@
                         http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
     <context:property-placeholder location="configure.properties" />
-    
-    <bean id="car" class="com.example.demo.factory.StaticCarFactory"
-    factory-method="getCar">
+
+    <bean id="car" class="com.example.demo.factory.StaticCarFactory" factory-method="getCar">
         <constructor-arg value="Banz"></constructor-arg>
     </bean>
 
@@ -18,4 +17,6 @@
     <bean id="car3" class="com.example.demo.factory.CarFactoryBean">
         <property name="brand" value="BMW"></property>
     </bean>
+
+    <bean id="connection" class="com.example.demo.factory.ConnectionFactory"></bean>
 </beans>
