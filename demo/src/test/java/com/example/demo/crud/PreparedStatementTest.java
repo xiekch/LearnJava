@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.example.demo.util.JDBCUtils;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,7 +20,7 @@ public class PreparedStatementTest {
     }
 
     @Test
-    public void updateTest() {
+    public void CreateTest() {
         // ? placeholder
         String sql = "insert into user_table values(?,?,?);";
         PreparedStatement preparedStatement = null;
@@ -38,5 +40,29 @@ public class PreparedStatementTest {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Test
+    public void updateTest() {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = JDBCUtils.getConnection();
+            String sql = "update user_table set name=? where name =?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setObject(1, "GG");
+            preparedStatement.setObject(2, "DD");
+            preparedStatement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(connection, preparedStatement);
+        }
+    }
+
+    @Test
+    public void deleteTest() {
+        String sql="delete from user_table where name=?";
+        JDBCUtils.update(sql, "EE");
     }
 }
