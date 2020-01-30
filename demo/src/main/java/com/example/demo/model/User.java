@@ -12,6 +12,11 @@ public class User {
         this.password = "123456";
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     /**
      * @param name the name to set
      */

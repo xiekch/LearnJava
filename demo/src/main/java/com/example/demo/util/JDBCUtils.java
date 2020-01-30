@@ -1,10 +1,15 @@
 package com.example.demo.util;
 
 import java.io.FileInputStream;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.springframework.core.io.ClassPathResource;
@@ -59,5 +64,69 @@ public class JDBCUtils {
         } finally {
             closeResource(connection, preparedStatement);
         }
+    }
+
+    public static <T> T querySingle(Class<T> cl, String sql, Object... args) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]);
+            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                T t = cl.getConstructor().newInstance();
+                for (int i = 0; i < columnCount; i++) {
+                    String columnLabel = metaData.getColumnLabel(i + 1);
+                    Field declaredField = cl.getDeclaredField(columnLabel);
+                    declaredField.setAccessible(true);
+                    declaredField.set(t, resultSet.getObject(i + 1));
+                }
+                return t;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResource(connection, preparedStatement);
+        }
+        return null;
+    }
+
+    public static <T> List<T>  queryList(Class<T> cl, String sql, Object... args) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]);
+            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ArrayList<T> arrayList = new ArrayList<T>();
+            while (resultSet.next()) {
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                T t = cl.getConstructor().newInstance();
+                for (int i = 0; i < columnCount; i++) {
+                    String columnLabel = metaData.getColumnLabel(i + 1);
+                    Field declaredField = cl.getDeclaredField(columnLabel);
+                    declaredField.setAccessible(true);
+                    declaredField.set(t, resultSet.getObject(i + 1));
+                }
+                arrayList.add(t);
+            }
+            return arrayList;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResource(connection, preparedStatement);
+        }
+        return null;
     }
 }
