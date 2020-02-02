@@ -10,4 +10,13 @@ class DemoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	public void name() {
+		name(1);
+	}
+
+	public static <T> void name(T t) {
+		System.out.println(t);
+		System.out.println(t.getClass());
+	}
 }

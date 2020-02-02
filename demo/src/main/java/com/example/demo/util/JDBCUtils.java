@@ -49,7 +49,7 @@ public class JDBCUtils {
         }
     }
 
-    public static void update(String sql, Object... args) {
+    public static int update(String sql, Object... args) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -58,12 +58,13 @@ public class JDBCUtils {
             for (int i = 0; i < args.length; i++) {
                 preparedStatement.setObject(i + 1, args[i]);
             }
-            preparedStatement.execute();
+            return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             closeResource(connection, preparedStatement);
         }
+        return 0;
     }
 
     public static <T> T querySingle(Class<T> cl, String sql, Object... args) {

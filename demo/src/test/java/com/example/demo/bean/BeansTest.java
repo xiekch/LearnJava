@@ -5,7 +5,6 @@ import com.example.demo.model.Boss;
 import com.example.demo.model.Person;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

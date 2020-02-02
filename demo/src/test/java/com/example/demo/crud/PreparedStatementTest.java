@@ -14,6 +14,9 @@ import com.example.demo.util.JDBCUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+/**
+ * program to interfaces orm(object relational mapping) table<->class
+ */
 public class PreparedStatementTest {
     private Connection connection;
 
@@ -68,7 +71,10 @@ public class PreparedStatementTest {
     @Test
     public void deleteTest() {
         String sql = "delete from user_table where name=?";
-        JDBCUtils.update(sql, "EE");
+        if (JDBCUtils.update(sql, "EE") == 0) {
+            System.out.println("failed");
+        } else
+            System.out.println("succeeded");
     }
 
     @Test
