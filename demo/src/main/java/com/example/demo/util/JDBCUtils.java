@@ -63,6 +63,22 @@ public class JDBCUtils {
         return 0;
     }
 
+    public static int update(Connection connection, String sql, Object... args) {
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]);
+            }
+            return preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeResource(null, preparedStatement);
+        }
+        return 0;
+    }
+
     public static <T> T querySingle(Class<T> cl, String sql, Object... args) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

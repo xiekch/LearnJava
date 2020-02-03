@@ -2,7 +2,6 @@ package com.example.demo.jdbc;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import com.example.demo.util.JDBCUtils;
 
@@ -26,7 +25,7 @@ public class BatchTest {
             long end = System.currentTimeMillis();
             System.out.println("time: " + (end - start) + " ms");
             // time: 1095 ms
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(connection, prepareStatement);
@@ -54,7 +53,7 @@ public class BatchTest {
             long end = System.currentTimeMillis();
             System.out.println("time: " + (end - start) + " ms");
             // time: 55 ms
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(connection, prepareStatement);
@@ -84,7 +83,7 @@ public class BatchTest {
             long end = System.currentTimeMillis();
             System.out.println("time: " + (end - start) + " ms");
             // time: 48 ms
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             JDBCUtils.closeResource(connection, prepareStatement);

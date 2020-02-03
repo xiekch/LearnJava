@@ -108,9 +108,10 @@ public class PreparedStatementTest {
     }
 
     public static User queryUser(String sql, Object... args) {
-        Connection connection = JDBCUtils.getConnection();
+        Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
+            connection = JDBCUtils.getConnection();
             preparedStatement = connection.prepareStatement(sql);
             for (int i = 0; i < args.length; i++) {
                 preparedStatement.setObject(i + 1, args[i]);
