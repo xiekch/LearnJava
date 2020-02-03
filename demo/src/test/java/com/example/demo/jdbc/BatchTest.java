@@ -60,4 +60,34 @@ public class BatchTest {
             JDBCUtils.closeResource(connection, prepareStatement);
         }
     }
+
+    @Test
+    public void test3() {
+        Connection connection = null;
+        PreparedStatement prepareStatement = null;
+        try {
+            connection = JDBCUtils.getConnection();
+            connection.setAutoCommit(false);
+            long start = System.currentTimeMillis();
+            String sql = "insert into temp(name) values(?)";
+            // prepareStatement can improve performance greatly
+            prepareStatement = connection.prepareStatement(sql);
+            for (int i = 500; i < 1000; i++) {
+                prepareStatement.setObject(1, "name_" + i);
+                prepareStatement.addBatch();
+                if (i % 100 == 0 || i == 999) {
+                    prepareStatement.executeBatch();
+                    prepareStatement.clearBatch();
+                }
+            }
+            connection.commit();
+            long end = System.currentTimeMillis();
+            System.out.println("time: " + (end - start) + " ms");
+            // time: 48 ms
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(connection, prepareStatement);
+        }
+    }
 }

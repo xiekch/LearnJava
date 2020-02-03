@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -15,22 +14,19 @@ import java.util.Properties;
 import org.springframework.core.io.ClassPathResource;
 
 public class JDBCUtils {
-    public static Connection getConnection() {
+    public static Connection getConnection() throws Exception {
         Properties properties = new Properties();
         ClassPathResource resource = new ClassPathResource("db.properties");
         FileInputStream in = null;
         Connection connection = null;
-        try {
-            in = new FileInputStream(resource.getFile());
-            properties.load(in);
+        in = new FileInputStream(resource.getFile());
+        properties.load(in);
 
-            Class.forName(properties.getProperty("driver"));
+        Class.forName(properties.getProperty("driver"));
 
-            String url = properties.getProperty("url");
-            connection = DriverManager.getConnection(url, properties);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String url = properties.getProperty("url");
+        connection = DriverManager.getConnection(url, properties);
+
         return connection;
     }
 
@@ -59,7 +55,7 @@ public class JDBCUtils {
                 preparedStatement.setObject(i + 1, args[i]);
             }
             return preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             closeResource(connection, preparedStatement);
@@ -98,7 +94,7 @@ public class JDBCUtils {
         return null;
     }
 
-    public static <T> List<T>  queryList(Class<T> cl, String sql, Object... args) {
+    public static <T> List<T> queryList(Class<T> cl, String sql, Object... args) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
