@@ -9,27 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo.util.JDBCUtils;
+
 /**
  * base data access object
  */
 public abstract class BaseDao {
 
-    public static void closeResource(Connection connection, PreparedStatement preparedStatement) {
-        try {
-            if (connection != null)
-                connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            if (preparedStatement != null)
-                preparedStatement.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static int update(Connection connection, String sql, Object... args) {
+    protected static int update(Connection connection, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -40,12 +27,12 @@ public abstract class BaseDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            closeResource(null, preparedStatement);
+            JDBCUtils.closeResource(null, preparedStatement);
         }
         return 0;
     }
 
-    public static <T> T querySingle(Connection connection, Class<T> cl, String sql, Object... args) {
+    protected static <T> T querySingle(Connection connection, Class<T> cl, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -69,12 +56,12 @@ public abstract class BaseDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            closeResource(null, preparedStatement);
+            JDBCUtils.closeResource(null, preparedStatement);
         }
         return null;
     }
 
-    public static <T> List<T> queryList(Connection connection, Class<T> cl, String sql, Object... args) {
+    protected static <T> List<T> queryList(Connection connection, Class<T> cl, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -100,12 +87,12 @@ public abstract class BaseDao {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            closeResource(null, preparedStatement);
+            JDBCUtils.closeResource(null, preparedStatement);
         }
         return null;
     }
 
-    public static <T> T getValue(Connection connection, String sql, Object... args) {
+    protected static <T> T getValue(Connection connection, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -119,7 +106,7 @@ public abstract class BaseDao {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeResource(null, preparedStatement);
+            JDBCUtils.closeResource(null, preparedStatement);
         }
         return null;
     }
