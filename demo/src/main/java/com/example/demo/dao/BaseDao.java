@@ -1,6 +1,8 @@
 package com.example.demo.dao;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +16,18 @@ import com.example.demo.util.JDBCUtils;
 /**
  * base data access object
  */
-public abstract class BaseDao {
+public abstract class BaseDao<T> {
+    private Class<T> cl;
 
-    protected static int update(Connection connection, String sql, Object... args) {
+    {
+        // `this` refer to subclass
+        Type genericSuperclass = this.getClass().getGenericSuperclass();
+        ParameterizedType parameterizedType = (ParameterizedType) genericSuperclass;
+        Type[] types = parameterizedType.getActualTypeArguments();
+        cl = (Class<T>) types[0];
+    }
+
+    protected int update(Connection connection, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -32,7 +43,7 @@ public abstract class BaseDao {
         return 0;
     }
 
-    protected static <T> T querySingle(Connection connection, Class<T> cl, String sql, Object... args) {
+    protected T querySingle(Connection connection, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -61,7 +72,7 @@ public abstract class BaseDao {
         return null;
     }
 
-    protected static <T> List<T> queryList(Connection connection, Class<T> cl, String sql, Object... args) {
+    protected List<T> queryList(Connection connection, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -92,7 +103,7 @@ public abstract class BaseDao {
         return null;
     }
 
-    protected static <T> T getValue(Connection connection, String sql, Object... args) {
+    protected <E> E getValue(Connection connection, String sql, Object... args) {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -101,7 +112,7 @@ public abstract class BaseDao {
             }
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                return (T) resultSet.getObject(1);
+                return (E) resultSet.getObject(1);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.demo.model.User;
 
-public class UserDaoImpl extends BaseDao implements UserDao {
+public class UserDaoImpl extends BaseDao<User> implements UserDao {
 
     @Override
     public void insert(Connection connection, User user) {
@@ -29,13 +29,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     @Override
     public User getUserById(Connection connection, int id) {
         String sql = "select name,password,id from user_table where id=?";
-        return querySingle(connection, User.class, sql, id);
+        return querySingle(connection, sql, id);
     }
 
     @Override
     public List<User> getAll(Connection connection) {
         String sql = "select name,password,id from user_table";
-        return queryList(connection, User.class, sql);
+        return queryList(connection, sql);
     }
 
     @Override

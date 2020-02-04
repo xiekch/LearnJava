@@ -17,7 +17,7 @@ public class DaoTest {
         Connection connection = null;
         try {
             connection = JDBCUtils.getConnection();
-            User user = new User("Jennifer", "abcd", 0);
+            User user = new User("Rod", "abcd", 0);
             userDaoImpl.insert(connection, user);
             System.out.println("success");
         } catch (Exception e) {
