@@ -10,7 +10,7 @@ public class CycleTest {
 
 	@Test
 	public void test() {
-		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("beansCycle.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beansCycle.xml");
 
 		Car car1 = (Car) ac.getBean("car");
 		System.out.println(car1);
@@ -20,9 +20,7 @@ public class CycleTest {
 		// Person person = (Person) ac.getBean("person");
 		// System.out.println(person);
 
-		ac.close();
-		// SpringApplication.run(DemoApplication.class, args);
-
+		((ClassPathXmlApplicationContext) ac).close();
 	}
 
 }

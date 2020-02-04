@@ -12,7 +12,7 @@ public class ScopeTest {
 	@Test
 	public void test() {
 		System.out.println("before");
-		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("beansScope.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beansScope.xml");
 		System.out.println("after");
 		HelloWorld helloWorld = (HelloWorld) ac.getBean("helloWorld");
 		helloWorld.sayHello();
@@ -24,9 +24,7 @@ public class ScopeTest {
 		// Person person = (Person) ac.getBean("person");
 		// System.out.println(person);
 
-		ac.close();
-		// SpringApplication.run(DemoApplication.class, args);
-
+		((ClassPathXmlApplicationContext) ac).close();
 	}
 
 }

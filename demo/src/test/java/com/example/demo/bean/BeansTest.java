@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
 public class BeansTest {
 
 	@Test
@@ -30,11 +29,10 @@ public class BeansTest {
 		System.out.println(boss);
 		// System.out.println(person.getCar()==boss.getCars().get("a"));
 
-		Person person3=(Person)ac.getBean("person4");
+		Person person3 = (Person) ac.getBean("person4");
 		System.out.println(person3);
-		
-		// SpringApplication.run(DemoApplication.class, args);
 
+		((ClassPathXmlApplicationContext) ac).close();
 	}
 
 }

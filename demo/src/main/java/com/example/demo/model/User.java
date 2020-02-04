@@ -6,15 +6,23 @@ import org.springframework.stereotype.Component;
 public class User {
     private String name;
     private String password;
+    private int id;
 
     public User() {
         this.name = "Tom";
         this.password = "123456";
+        this.id = 5;
     }
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+    }
+
+    public User(String name, String password, int id) {
+        this.name = name;
+        this.password = password;
+        this.id = id;
     }
 
     /**
@@ -32,6 +40,13 @@ public class User {
     }
 
     /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
      * @return the name
      */
     public String getName() {
@@ -43,6 +58,13 @@ public class User {
      */
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
     }
 
     @Override
