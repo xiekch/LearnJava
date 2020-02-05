@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<c3p0-config>
+
+	<!-- 专门为oracle提供的配置信息 -->
+	<named-config name="config">
+		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+		<!-- omit localhost:3306 if the open port is at 3306 -->
+		<property name="jdbcUrl">jdbc:mysql:///gc</property>
+		<property name="user">test</property>
+		<property name="password">localhost</property>
+
+		<property name="acquireIncrement">3</property>
+		<property name="initialPoolSize">5</property>
+		
+		<property name="minPoolSize">2</property>
+		<property name="maxPoolSize">10</property>
+
+		<property name="maxStatements">50</property>
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+</c3p0-config>
