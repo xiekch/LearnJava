@@ -8,7 +8,7 @@ import java.util.Properties;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.core.io.ClassPathResource;
 
-public class ConnectionFactory implements FactoryBean {
+public class ConnectionFactory implements FactoryBean<Connection> {
     private Connection connection;
 
     public ConnectionFactory() throws Exception {
@@ -25,7 +25,7 @@ public class ConnectionFactory implements FactoryBean {
     }
 
     @Override
-    public Object getObject() throws Exception {
+    public Connection getObject() throws Exception {
         return this.connection;
     }
 

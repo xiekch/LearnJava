@@ -13,6 +13,9 @@ import java.util.Properties;
 
 import org.springframework.core.io.ClassPathResource;
 
+/**
+ * JDBC: Java DataBase Connectivity
+ */
 public class JDBCUtils {
     public static Connection getConnection() throws Exception {
         Properties properties = new Properties();
