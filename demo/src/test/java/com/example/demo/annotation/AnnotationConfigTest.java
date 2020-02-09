@@ -24,8 +24,8 @@ public class AnnotationConfigTest {
         Person person2 = (Person) ac.getBean("person2");
         System.out.println(person2);
     }
-    @Test
 
+    @Test
     public void testScan() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
         String[] names = ac.getBeanDefinitionNames();
@@ -42,6 +42,25 @@ public class AnnotationConfigTest {
         AnnotationConfigTest bean = ac.getBean(AnnotationConfigTest.class);
         System.out.println(bean);
         System.out.println(this);
+    }
+
+    @Test
+    public void testScope() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        Person user1 = (Person) ac.getBean("person2");
+        Person user2 = (Person) ac.getBean("person2");
+
+        System.out.println(user1 == user2);
+    }
+
+    @Test
+    public void testLoad() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        System.out.println("container created");
+        Person user1 = (Person) ac.getBean("person3");
+        Person user2 = (Person) ac.getBean("person3");
+
+        System.out.println(user1 == user2);
     }
 
     @Override
