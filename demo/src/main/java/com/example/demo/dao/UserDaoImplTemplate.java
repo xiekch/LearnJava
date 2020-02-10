@@ -31,13 +31,13 @@ public class UserDaoImplTemplate {
     }
 
     public User getUserById(int id) {
-        String sql = "select name,password,id from user_table where id=?";
+        String sql = "select name,password,id,balance from user_table where id=?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
-        return jdbcTemplate.queryForObject(sql, rowMapper);
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
     public List<User> getAll() {
-        String sql = "select name,password,id from user_table where id <?";
+        String sql = "select name,password,id,balance from user_table where id <?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.query(sql, rowMapper, 5);
     }
@@ -45,5 +45,14 @@ public class UserDaoImplTemplate {
     public long getCount() {
         String sql = "select count(*) from user_table";
         return jdbcTemplate.queryForObject(sql, Long.class);
+    }
+
+    public void updateBalance(int id, int amount) {
+        User user = this.getUserById(id);
+        if (user.getBalance() + amount < 0) {
+            throw new RuntimeException("Insufficient Balance of " + user.getName());
+        }
+        String sql = "update user_table set balance =? where id =?";
+        jdbcTemplate.update(sql, user.getBalance() + amount, id);
     }
 }

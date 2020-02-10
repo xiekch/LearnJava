@@ -7,11 +7,13 @@ public class User {
     private String name;
     private String password;
     private int id;
+    private int balance;
 
     public User() {
         this.name = "Tom";
         this.password = "123456";
         this.id = 5;
+        this.balance = 0;
     }
 
     public User(String name, String password) {
@@ -23,6 +25,13 @@ public class User {
         this.name = name;
         this.password = password;
         this.id = id;
+    }
+
+    public User(String name, String password, int id, int balance) {
+        this.name = name;
+        this.password = password;
+        this.id = id;
+        this.balance = balance;
     }
 
     /**
@@ -47,6 +56,13 @@ public class User {
     }
 
     /**
+     * @param balance the balance to set
+     */
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    /**
      * @return the name
      */
     public String getName() {
@@ -65,6 +81,13 @@ public class User {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * @return the balance
+     */
+    public int getBalance() {
+        return balance;
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -61,6 +62,14 @@ public class AnnotationConfigTest {
         Person user2 = (Person) ac.getBean("person3");
 
         System.out.println(user1 == user2);
+    }
+
+    @Test
+    public void testCondition() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        Environment environment = ac.getEnvironment();
+        String osname = environment.getProperty("os.name");
+        System.out.println(osname);
     }
 
     @Override

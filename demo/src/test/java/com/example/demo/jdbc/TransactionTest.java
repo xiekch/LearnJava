@@ -3,11 +3,14 @@ package com.example.demo.jdbc;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import com.example.demo.service.UserService;
 import com.example.demo.util.JDBCUtils;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TransactionTest {
+
     @Test
     public void test1() {
         Connection connection = null;
@@ -33,5 +36,12 @@ public class TransactionTest {
         } finally {
             JDBCUtils.closeResource(connection, null);
         }
+    }
+
+    @Test
+    public void testUpdateBalance() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext ("transaction.xml");
+        UserService userService= (UserService) applicationContext.getBean("userService");
+        userService.transfer(2, 3, 2000);
     }
 }
