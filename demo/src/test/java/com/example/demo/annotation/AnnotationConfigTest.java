@@ -1,5 +1,6 @@
 package com.example.demo.annotation;
 
+import com.example.demo.aspect.Logging;
 import com.example.demo.config.AnnotationConfig;
 import com.example.demo.controller.UserController;
 import com.example.demo.model.User;
@@ -16,6 +17,13 @@ public class AnnotationConfigTest {
     @Autowired
     private User user;
 
+    private void printDefinitionNames(ApplicationContext ac) {
+        String[] names = ac.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
+    }
+
     @Test
     public void testPerson() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
@@ -29,10 +37,7 @@ public class AnnotationConfigTest {
     @Test
     public void testScan() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
-        String[] names = ac.getBeanDefinitionNames();
-        for (String name : names) {
-            System.out.println(name);
-        }
+        printDefinitionNames(ac);
         UserController userController = (UserController) ac.getBean("userController");
         System.out.println(userController);
     }
@@ -70,6 +75,14 @@ public class AnnotationConfigTest {
         Environment environment = ac.getEnvironment();
         String osname = environment.getProperty("os.name");
         System.out.println(osname);
+    }
+
+    @Test
+    public void testImport() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        printDefinitionNames(ac);
+        Logging logging = (Logging) ac.getBean("com.example.demo.aspect.Logging");
+        System.out.println(logging);
     }
 
     @Override
