@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.annotation.Person;
+import com.example.demo.factory.ConnectionFactory;
 import com.example.demo.model.Boss;
 
 import org.springframework.context.annotation.Bean;
@@ -34,5 +35,15 @@ public class AnnotationConfig {
     @Bean
     public Person person3() {
         return new Person("Dan", 50);
+    }
+
+    @Bean
+    public ConnectionFactory connectionFactory() {
+        try {
+            return new ConnectionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -85,6 +85,15 @@ public class AnnotationConfigTest {
         System.out.println(logging);
     }
 
+    @Test
+    public void testFactoryBean() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        Object bean = ac.getBean("connectionFactory");
+        System.out.println(bean);
+        Object bean2 = ac.getBean("&connectionFactory");
+        System.out.println(bean2);
+    }
+
     @Override
     public String toString() {
         return "config: " + this.user;

@@ -26,3 +26,9 @@ transaction
 
 
 ![](../assets/database_pool.png)
+
+
+
+声明式事务：AOP处理
+
+mysql 不支持check检查约束，需在程序中检查
