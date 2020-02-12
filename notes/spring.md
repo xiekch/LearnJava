@@ -1,5 +1,15 @@
 Spring is an IOC(DI) and AOP container framework.
 
+IOC(inversion of control)反转资源的控制方向
+
+DI : another  formulation of IOC: 组件以预先定义好的方式接受来自容器的资源注入	
+
+tradition: component --request--> container --response resource-->component
+
+IOC: container  --push resource--> component
+
+separate interfaces and implements -> factory pattern -> IOC
+
 配置文件-> 配置类
 
 `@Bean=<bean></bean>`
@@ -32,3 +42,9 @@ some ways to assemble beans
 - component scan+annotation
 - configure class 
 - implements interfaces (additional)
+
+
+
+
+
+properties assignment -> postProcessBeforeInitialization -> init method -> postProcessAfterInitialization

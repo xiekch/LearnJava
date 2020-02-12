@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ComponentScan.Filter;
 
 @Configuration
-@ComponentScan(value = { "com.example.demo.controller", "com.example.demo.model",
-        "com.example.demo.annotation" }, excludeFilters = {
+@ComponentScan(value = { "com.example.demo.controller", "com.example.demo.model", "com.example.demo.annotation",
+        "com.example.demo.config" }, excludeFilters = {
                 @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = { Boss.class }) })
 @Import(com.example.demo.aspect.Logging.class)
 public class AnnotationConfig {
