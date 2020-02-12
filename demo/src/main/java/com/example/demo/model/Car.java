@@ -1,5 +1,11 @@
 package com.example.demo.model;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Car {
     private String brand;
     private int price;
@@ -43,10 +49,12 @@ public class Car {
         return "brand:" + this.brand + " price:" + this.price + " corp:" + this.corp;
     }
 
+    @PostConstruct
     public void init() {
         System.out.println("initing car ...");
     }
 
+    @PreDestroy
     public void destroy() {
         System.out.println("destroying car ...");
     }

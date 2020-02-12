@@ -26,20 +26,23 @@ public class AnnotationConfigTest {
 
     @Test
     public void testPerson() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
         Person person = (Person) ac.getBean("person");
         System.out.println(person);
 
+        // `prototype` wouldn't be destroyed by container
         Person person2 = (Person) ac.getBean("person2");
         System.out.println(person2);
+        ac.close();
     }
 
     @Test
     public void testScan() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
         printDefinitionNames(ac);
         UserController userController = (UserController) ac.getBean("userController");
         System.out.println(userController);
+        ac.close();
     }
 
     @Test

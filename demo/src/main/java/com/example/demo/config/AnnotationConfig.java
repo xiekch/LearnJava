@@ -20,13 +20,13 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 @Import(com.example.demo.aspect.Logging.class)
 public class AnnotationConfig {
 
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "destroy")
     public Person person() {
         return new Person("Gril", 30);
     }
 
     @Scope("prototype")
-    @Bean("person2")
+    @Bean(value = "person2", destroyMethod = "destroy")
     public Person person1() {
         return new Person("Simon", 26);
     }

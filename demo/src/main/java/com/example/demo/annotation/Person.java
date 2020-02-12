@@ -56,4 +56,11 @@ public class Person {
         return "name: " + this.name + ", age: " + this.age;
     }
 
+    public void init() {
+        System.out.println("init person");
+    }
+
+    public void destroy() {
+        System.out.println("destory person");
+    }
 }
