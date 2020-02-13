@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ComponentScan.Filter;
 
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
         "com.example.demo.config" }, excludeFilters = {
                 @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = { Boss.class }) })
 @Import(com.example.demo.aspect.Logging.class)
+@PropertySource("classpath:/annotation/person.properties")
 public class AnnotationConfig {
 
     @Bean(initMethod = "init", destroyMethod = "destroy")
