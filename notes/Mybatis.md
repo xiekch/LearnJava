@@ -31,3 +31,14 @@ use interfaces instead of generic, program to interfaces
 origin: Dao -> DaoImpl
 
 mybatis: Mapper -> Mapper.xml
+
+
+
+mybatis-config.xml
+
+mapper
+
+- resource: sql mapping files
+- class
+  - sql mapping files in the same package of the interface classes
+  - annotation: not advocated, couples sql and java code
