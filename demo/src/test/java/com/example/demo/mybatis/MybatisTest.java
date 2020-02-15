@@ -73,4 +73,57 @@ public class MybatisTest {
             }
         }
     }
+
+    @Test
+    public void testInsertUser() {
+        SqlSession session = null;
+        try {
+            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+            session = sqlSessionFactory.openSession(true);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            User user = new User("Fin", "abcdef", 1000);
+            int count = mapper.insert(user);
+            System.out.println(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+        }
+    }
+
+    @Test
+    public void testUpdateUser() {
+        SqlSession session = null;
+        try {
+            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+            session = sqlSessionFactory.openSession(true);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            User user = new User("Fin", "abcdef", 2000, 13);
+            int count = mapper.update(user);
+            System.out.println(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+        }
+    }
+
+    @Test
+    public void testDeleteUser() {
+        SqlSession session = null;
+        try {
+            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+            session = sqlSessionFactory.openSession(true);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            int count = mapper.deleteById(13);
+            System.out.println(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+        }
+    }
 }

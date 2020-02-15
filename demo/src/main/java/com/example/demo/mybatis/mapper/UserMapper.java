@@ -5,11 +5,11 @@ import java.util.List;
 import com.example.demo.model.User;
 
 public interface UserMapper {
-    public void insert(User user);
+    public int insert(User user);
 
-    public void deleteById(int id);
+    public int deleteById(int id);
 
-    public void update(User user);
+    public int update(User user);
 
     public User getUserById(int id);
 

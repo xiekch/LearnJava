@@ -14,7 +14,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis/mapper/UserMapper.xml" />
+        <mapper resource="com/example/demo/mybatis/mapper/UserMapper.xml" />
         <mapper class="com.example.demo.mybatis.mapper.UserMapperAnnotation" />
         <!-- <mapper class="com.example.demo.mybatis.mapper.UserMapper" /> -->
     </mappers>

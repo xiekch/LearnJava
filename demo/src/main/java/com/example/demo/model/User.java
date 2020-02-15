@@ -21,17 +21,17 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String password, int id) {
+    public User(String name, String password, int balance) {
         this.name = name;
         this.password = password;
-        this.id = id;
+        this.balance = balance;
     }
 
-    public User(String name, String password, int id, int balance) {
+    public User(String name, String password, int balance, int id) {
         this.name = name;
         this.password = password;
-        this.id = id;
         this.balance = balance;
+        this.id = id;
     }
 
     /**
