@@ -19,11 +19,11 @@ public class DriverTest {
         Driver driver = new com.mysql.cj.jdbc.Driver();
         String url = "jdbc:mysql://localhost:3306/gc";
         Properties properties = new Properties();
-        InputStream in = this.getClass().getResourceAsStream("/db.properties");
+        InputStream in = this.getClass().getResourceAsStream("/jdbc/jdbc.properties");
 
-        // FileInputStream in = new FileInputStream("src/main/resources/db.properties");
+        // FileInputStream in = new FileInputStream("src/main/resources/jdbc/jdbc.properties");
         // the following doesn't work
-        // FileInputStream in = new FileInputStream("/db.properties");
+        // FileInputStream in = new FileInputStream("jdbc/jdbc.properties");
         properties.load(in);
         Connection connection = driver.connect(url, properties);
         System.out.println(connection);
@@ -33,7 +33,7 @@ public class DriverTest {
     @Test
     public void test2() throws Exception {
         Properties properties = new Properties();
-        ClassPathResource resource = new ClassPathResource("db.properties");
+        ClassPathResource resource = new ClassPathResource("jdbc/jdbc.properties");
         File file = resource.getFile();
         FileInputStream in = new FileInputStream(file);
         properties.load(in);
@@ -41,7 +41,7 @@ public class DriverTest {
         Class cl = Class.forName(properties.getProperty("driver"));
         Driver driver = (Driver) cl.getDeclaredConstructor().newInstance();
         String url = properties.getProperty("url");
-        // InputStream in = this.getClass().getResourceAsStream("/db.properties");
+        // InputStream in = this.getClass().getResourceAsStream("/jdbc/jdbc.properties");
         Connection connection = driver.connect(url, properties);
         System.out.println(connection);
     }
@@ -49,7 +49,7 @@ public class DriverTest {
     @Test
     public void test3() throws Exception {
         Properties properties = new Properties();
-        ClassPathResource resource = new ClassPathResource("db.properties");
+        ClassPathResource resource = new ClassPathResource("jdbc/jdbc.properties");
         File file = resource.getFile();
         FileInputStream in = new FileInputStream(file);
         properties.load(in);
@@ -66,7 +66,7 @@ public class DriverTest {
     @Test
     public void test4() throws Exception {
         Properties properties = new Properties();
-        ClassPathResource resource = new ClassPathResource("db.properties");
+        ClassPathResource resource = new ClassPathResource("jdbc/jdbc.properties");
         File file = resource.getFile();
         FileInputStream in = new FileInputStream(file);
         properties.load(in);

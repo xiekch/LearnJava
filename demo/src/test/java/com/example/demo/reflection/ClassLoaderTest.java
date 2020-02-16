@@ -32,7 +32,7 @@ public class ClassLoaderTest {
     @Test
     public void test2() throws Exception {
         Properties pro = new Properties();
-        ClassPathResource classPathResource = new ClassPathResource("db.properties");
+        ClassPathResource classPathResource = new ClassPathResource("jdbc/jdbc.properties");
         FileInputStream file = new FileInputStream(classPathResource.getFile());
         pro.load(file);
         String user = pro.getProperty("user");

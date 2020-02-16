@@ -13,7 +13,7 @@ public class ConnectionFactory implements FactoryBean<Connection> {
 
     public ConnectionFactory() throws Exception {
         Properties properties = new Properties();
-        ClassPathResource resource = new ClassPathResource("db.properties");
+        ClassPathResource resource = new ClassPathResource("jdbc/jdbc.properties");
         FileInputStream in = new FileInputStream(resource.getFile());
         properties.load(in);
 

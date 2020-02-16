@@ -8,7 +8,7 @@ import com.example.demo.mybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("mybatis.userService")
 public class UserService {
 
     @Autowired

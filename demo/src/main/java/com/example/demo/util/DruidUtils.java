@@ -20,7 +20,7 @@ public class DruidUtils {
 
     static {
         try {
-            ClassPathResource classPathResource = new ClassPathResource("druid.properties");
+            ClassPathResource classPathResource = new ClassPathResource("jdbc/druid.properties");
             Properties properties = new Properties();
             properties.load(new FileInputStream(classPathResource.getFile()));
             druidDataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);

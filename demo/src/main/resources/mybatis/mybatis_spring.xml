@@ -32,5 +32,6 @@
         <property name="mapperLocations" value="mybatis/mapper/*.xml"></property>
     </bean>
 
+    <!-- scan the interfaces to enable @autowired -->
     <mybatis:scan base-package="com.example.demo.mybatis.mapper"></mybatis:scan>
 </beans>        

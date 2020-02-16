@@ -21,7 +21,7 @@ public class DruidTest {
 
     @Test
     public void test1() throws Exception {
-        ClassPathResource classPathResource = new ClassPathResource("druid.properties");
+        ClassPathResource classPathResource = new ClassPathResource("jdbc/druid.properties");
         Properties properties = new Properties();
         properties.load(new FileInputStream(classPathResource.getFile()));
         DataSource druidDataSource = DruidDataSourceFactory.createDataSource(properties);

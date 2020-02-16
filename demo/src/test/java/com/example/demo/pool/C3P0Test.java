@@ -20,7 +20,7 @@ public class C3P0Test {
     @Test
     public void test1() throws Exception {
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
-        ClassPathResource classPathResource = new ClassPathResource("db.properties");
+        ClassPathResource classPathResource = new ClassPathResource("jdbc/jdbc.properties");
         Properties properties = new Properties();
         properties.load(new FileInputStream(classPathResource.getFile()));
         comboPooledDataSource.setDriverClass(properties.getProperty("driver"));

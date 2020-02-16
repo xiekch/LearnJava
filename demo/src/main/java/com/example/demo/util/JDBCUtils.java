@@ -19,7 +19,7 @@ import org.springframework.core.io.ClassPathResource;
 public class JDBCUtils {
     public static Connection getConnection() throws Exception {
         Properties properties = new Properties();
-        ClassPathResource resource = new ClassPathResource("db.properties");
+        ClassPathResource resource = new ClassPathResource("jdbc/jdbc.properties");
         FileInputStream in = null;
         Connection connection = null;
         in = new FileInputStream(resource.getFile());
