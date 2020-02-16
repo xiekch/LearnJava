@@ -92,6 +92,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "I am " + this.name;
+        return "I am " + this.name + ". My id is " + this.id;
     }
 }

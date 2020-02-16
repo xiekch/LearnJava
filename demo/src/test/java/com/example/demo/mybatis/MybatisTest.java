@@ -84,6 +84,7 @@ public class MybatisTest {
             User user = new User("Fin", "abcdef", 1000);
             int count = mapper.insert(user);
             System.out.println(count);
+            System.out.println(user);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

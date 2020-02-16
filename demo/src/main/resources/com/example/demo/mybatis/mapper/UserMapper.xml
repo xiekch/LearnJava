@@ -5,7 +5,7 @@
     select * from user_table where id = #{id}
   </select>
 
-  <insert id="insert">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
     insert into user_table (name,password,balance) 
     values (#{name},#{password},#{balance})
   </insert>
