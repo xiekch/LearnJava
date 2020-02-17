@@ -58,7 +58,7 @@ public class AnnotationConfigTest {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
         Person user1 = (Person) ac.getBean("person2");
         Person user2 = (Person) ac.getBean("person2");
-
+        System.out.println(user2);
         System.out.println(user1 == user2);
     }
 

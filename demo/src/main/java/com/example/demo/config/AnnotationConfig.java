@@ -30,7 +30,10 @@ public class AnnotationConfig {
     @Scope("prototype")
     @Bean(value = "person2", destroyMethod = "destroy")
     public Person person1() {
-        return new Person("Simon", 26);
+        Person person = new Person("Simon", 26);
+        person.setName("Simon");
+        person.setAge(26);
+        return person;
     }
 
     @Lazy

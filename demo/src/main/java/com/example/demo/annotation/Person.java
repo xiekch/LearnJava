@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Value;
 
 @MyAnnotation("hello")
 public class Person {
+    // @Value cannot be changed by set method
+    // maybe it is implemented by injecting when returned
     @Value("${person.name}")
     private String name;
-    @Value("40")
+    // @Value("40")
     public int age;
 
     public Person() {
