@@ -48,3 +48,7 @@ some ways to assemble beans
 
 
 properties assignment -> postProcessBeforeInitialization -> init method -> postProcessAfterInitialization
+
+
+
+#{} SpEL(Spring Expression Language)
