@@ -42,3 +42,21 @@ mapper
 - class
   - sql mapping files in the same package of the interface classes
   - annotation: not advocated, couples sql and java code
+
+
+
+parameters
+
+when multiple parameters are passed in, mybatis would encapsulate them as a map. 
+
+key: param1...paramN or 0...N
+
+value: the parameters
+
+@Param("name") to designate the names of parameters
+
+if the parameters belong to a data model, a POJO is suggested.
+
+if not, a TO(transfer object) is recommended.
+
+or a map is passed in.

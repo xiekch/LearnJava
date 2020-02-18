@@ -2,6 +2,7 @@ package com.example.demo.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 import com.example.demo.model.User;
 import com.example.demo.mybatis.mapper.UserMapper;
@@ -120,6 +121,26 @@ public class MybatisTest {
             UserMapper mapper = session.getMapper(UserMapper.class);
             int count = mapper.deleteById(13);
             System.out.println(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+        }
+    }
+
+    @Test
+    public void testMap() {
+        SqlSession session = null;
+        try {
+            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+            session = sqlSessionFactory.openSession(true);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("id", 8);
+            map.put("password", "abcdef");
+            User user = mapper.getUserByIdAndPasswordMap(map);
+            System.out.println(user);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

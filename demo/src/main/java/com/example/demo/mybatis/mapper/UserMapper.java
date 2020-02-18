@@ -1,6 +1,7 @@
 package com.example.demo.mybatis.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.demo.model.User;
 
@@ -16,4 +17,6 @@ public interface UserMapper {
     public List<User> getAll();
 
     public long getCount();
+
+    public User getUserByIdAndPasswordMap(Map<String, Object> map);
 }
