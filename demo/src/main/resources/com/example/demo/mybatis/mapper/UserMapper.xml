@@ -23,4 +23,15 @@
   <select id="getUserByIdAndPasswordMap" resultType="com.example.demo.model.User">
     select * from user_table where id = #{id} and password=#{password,jdbcType=NULL}
   </select>
+
+  <!-- public User getUserByIdReturnMap(int id); -->
+  <!-- resultType: what type you want to encapsulate an entry in-->
+  <select id="getUserByIdReturnMap" resultType="map">
+    select * from user_table where id = #{id}
+  </select>
+
+  <!-- public Map<Integer,User> getAllReturnMap(); -->
+  <select id="getAllReturnMap" resultType="com.example.demo.model.User">
+    select * from user_table
+  </select>
 </mapper>

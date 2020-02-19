@@ -3,6 +3,7 @@ package com.example.demo.mybatis;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.example.demo.model.User;
 import com.example.demo.mybatis.mapper.UserMapper;
@@ -130,7 +131,7 @@ public class MybatisTest {
     }
 
     @Test
-    public void testMap() {
+    public void testParamsMap() {
         SqlSession session = null;
         try {
             SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
@@ -141,6 +142,40 @@ public class MybatisTest {
             map.put("password", "abcdef");
             User user = mapper.getUserByIdAndPasswordMap(map);
             System.out.println(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+        }
+    }
+
+    @Test
+    public void testReturnMap() {
+        SqlSession session = null;
+        try {
+            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+            session = sqlSessionFactory.openSession(true);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            Map<String, Object> map = mapper.getUserByIdReturnMap(8);
+            System.out.println(map);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null)
+                session.close();
+        }
+    }
+
+    @Test
+    public void testSelectAllReturnMap() {
+        SqlSession session = null;
+        try {
+            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+            session = sqlSessionFactory.openSession(true);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            Map<Integer, User> map = mapper.getAllReturnMap();
+            System.out.println(map);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

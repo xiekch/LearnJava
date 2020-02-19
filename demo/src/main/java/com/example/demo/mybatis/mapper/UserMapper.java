@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.example.demo.model.User;
 
+import org.apache.ibatis.annotations.MapKey;
+
 public interface UserMapper {
     public int insert(User user);
 
@@ -19,4 +21,9 @@ public interface UserMapper {
     public long getCount();
 
     public User getUserByIdAndPasswordMap(Map<String, Object> map);
+
+    public Map<String, Object> getUserByIdReturnMap(int id);
+
+    @MapKey("id")
+    public Map<Integer,User> getAllReturnMap();
 }
