@@ -60,3 +60,24 @@ if the parameters belong to a data model, a POJO is suggested.
 if not, a TO(transfer object) is recommended.
 
 or a map is passed in.
+
+
+
+`select * from user_table where id = ${id} and password=#{password}`
+
+-> `select * from user_table where id=Jim and password=?`
+
+#{} is like PreparedStatement, which is recommended
+
+{} is like Statement, which can be used like `select * from ${table} where ...`
+
+
+
+jdbc type for null
+
+default: OTHER
+
+but Oracle can't recognize it
+
+- #{password, jdbcType=NULL}
+- set jdbcTypeForNull=NULL in the configuration file 

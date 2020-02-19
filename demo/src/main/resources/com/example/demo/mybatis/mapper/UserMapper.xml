@@ -21,6 +21,6 @@
 
   <!-- public User getUserByIdAndPasswordMap(Map<String, Object> map); -->
   <select id="getUserByIdAndPasswordMap" resultType="com.example.demo.model.User">
-    select * from user_table where id = #{id} and password=#{password}
+    select * from user_table where id = #{id} and password=#{password,jdbcType=NULL}
   </select>
 </mapper>
