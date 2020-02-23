@@ -1,10 +1,10 @@
 transaction
 
-![](../assets/transaction.png)
+![](../assets/database/transaction.png)
 
 
 
-![](../assets/preparedstatement_vs_statement.png)
+![](../assets/database/preparedstatement_vs_statement.png)
 
 事务属性
 
@@ -15,17 +15,17 @@ transaction
 
 
 
-![](../assets/acid.png)
+![](../assets/database/acid.png)
 
 
 
-![](../assets/concurrency_problems.png)
+![](../assets/database/concurrency_problems.png)
 
-![](../assets/isolation_levels.png)
+![](../assets/database/isolation_levels.png)
 
 
 
-![](../assets/database_pool.png)
+![](../assets/database/database_pool.png)
 
 
 

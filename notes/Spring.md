@@ -1,8 +1,10 @@
+# Spring
+
 Spring is an IOC(DI) and AOP container framework.
 
-IOC(inversion of control)反转资源的控制方向
+IOC(inversion of control)inverse the direction of controlling resources
 
-DI : another  formulation of IOC: 组件以预先定义好的方式接受来自容器的资源注入	
+DI : another formulation of IOC: components accept the resource injections from the container in a predefined way
 
 tradition: component --request--> container --response resource-->component
 
@@ -10,13 +12,13 @@ IOC: container  --push resource--> component
 
 separate interfaces and implements -> factory pattern -> IOC
 
-配置文件-> 配置类
+configuration files -> configuration classes
 
 `@Bean=<bean></bean>`
 
-注册组件：
+component registration：
 
-- 包扫描+组件注解标注（仅限自己写的类）
+- package scans + component annotations（only self-defined classes）
 - @Bean + method
 - @Import 
   - @Import
@@ -52,3 +54,13 @@ properties assignment -> postProcessBeforeInitialization -> init method -> postP
 
 
 #{} SpEL(Spring Expression Language)
+
+@Autowired: Marks a constructor, field, setter method, or config method as to be autowired by Spring's dependency injection facilities. 
+
+- sometimes @Autowired can be omitted, where in @Bean or only one parametered constructor
+
+
+
+xxxAware: pass in underlying components when created
+
+implemented by ApplicationContextAwareProcessor when postProcessBeforeInitialization

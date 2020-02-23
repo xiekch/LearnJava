@@ -6,9 +6,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
-    @Qualifier("bookdao2")
-    @Autowired
     private BookDao bookDao;
+
+    @Autowired
+    public BookService(@Qualifier("bookdao2") BookDao bookDao) {
+        this.bookDao = bookDao;
+        System.out.println("this is BookService's parameterd constructor");
+    }
 
     @Override
     public String toString() {
