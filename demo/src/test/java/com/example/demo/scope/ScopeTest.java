@@ -12,7 +12,7 @@ public class ScopeTest {
 	@Test
 	public void test() {
 		System.out.println("before");
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beansScope.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("bean/beansScope.xml");
 		System.out.println("after");
 		HelloWorld helloWorld = (HelloWorld) ac.getBean("helloWorld");
 		helloWorld.sayHello();

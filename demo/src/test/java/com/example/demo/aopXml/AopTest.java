@@ -7,7 +7,7 @@ public class AopTest {
 
     @Test
     public void test() {
-        ClassPathXmlApplicationContext ca = new ClassPathXmlApplicationContext("aopXml.xml");
+        ClassPathXmlApplicationContext ca = new ClassPathXmlApplicationContext("aop/aopXml.xml");
         Calculator calculator = (Calculator) ca.getBean("calculator");
         Calculator calculator2 = (Calculator) ca.getBean("calculator");
         System.out.println(calculator.getClass().getName());

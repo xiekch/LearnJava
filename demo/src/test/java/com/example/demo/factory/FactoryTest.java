@@ -9,7 +9,7 @@ public class FactoryTest {
 
 	@Test
 	public void test() {
-		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("beansFactory.xml");
+		ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("bean/beansFactory.xml");
 
 		Car car1 = (Car) ac.getBean("car");
 		System.out.println("car1: " + car1);

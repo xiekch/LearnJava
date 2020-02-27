@@ -19,7 +19,7 @@ public class JDBCBeanTest {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
     {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beansJDBC.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc/beansJDBC.xml");
         dataSource = (DataSource) applicationContext.getBean("dataSource");
         jdbcTemplate = (JdbcTemplate) applicationContext.getBean("jdbcTemplate");
         ((ClassPathXmlApplicationContext) applicationContext).close();

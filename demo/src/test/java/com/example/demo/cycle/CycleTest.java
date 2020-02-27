@@ -10,7 +10,7 @@ public class CycleTest {
 
 	@Test
 	public void test() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beansCycle.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("bean/beansCycle.xml");
 
 		Car car1 = (Car) ac.getBean("car");
 		System.out.println(car1);

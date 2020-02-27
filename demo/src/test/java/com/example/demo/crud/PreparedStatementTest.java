@@ -21,7 +21,7 @@ public class PreparedStatementTest {
     private Connection connection;
 
     {
-        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("beansFactory.xml");
+        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("bean/beansFactory.xml");
         this.connection = (Connection) ac.getBean("connection");
         ac.close();
         System.out.println(this.connection);
@@ -30,14 +30,19 @@ public class PreparedStatementTest {
     @Test
     public void CreateTest() {
         // ? placeholder
-        String sql = "insert into user_table values(?,?,?);";
+        String sql = "insert into user_table (name,password,balance) values(?,?,?);";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = this.connection.prepareStatement(sql);
-            preparedStatement.setString(1, "FF");
+            preparedStatement.setString(1, "Gris");
             preparedStatement.setString(2, "123456");
             preparedStatement.setInt(3, 2000);
-            preparedStatement.execute();
+            int count = preparedStatement.executeUpdate();
+            if (count == 1) {
+                System.out.println("success");
+            } else {
+                System.out.println("failure");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

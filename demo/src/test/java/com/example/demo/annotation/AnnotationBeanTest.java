@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AnnotationBeanTest {
     @Test
     public void test() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("annotationBean.xml");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("bean/annotationBean.xml");
         UserController userController = (UserController) ac.getBean("userController");
         System.out.println(userController);
 

@@ -12,14 +12,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DaoTemplateTest {
     private UserDaoImplTemplate userDaoImpl;
     {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beansJDBC.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("jdbc/beansJDBC.xml");
         userDaoImpl = applicationContext.getBean(UserDaoImplTemplate.class);
         ((ClassPathXmlApplicationContext) applicationContext).close();
     }
 
     @Test
     public void testInsert() {
-        User user = new User("Jim", "abcd", 0);
+        User user = new User("Ken", "abcd", 1000);
         userDaoImpl.insert(user);
         System.out.println("success");
     }

@@ -14,7 +14,7 @@ public class AspectTest {
             System.out.println(directory.getAbsolutePath());// 获取绝对路径
         } catch (Exception e) {
         }
-        ClassPathXmlApplicationContext ca = new ClassPathXmlApplicationContext("aspectBeans.xml");
+        ClassPathXmlApplicationContext ca = new ClassPathXmlApplicationContext("bean/aspectBeans.xml");
         Calculator calculator = (Calculator) ca.getBean("calculator");
         Calculator calculator2 = (Calculator) ca.getBean("calculator");
         System.out.println(calculator.getClass().getName());

@@ -12,7 +12,7 @@ public class BeansTest {
 
 	@Test
 	public void test() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("bean/beans.xml");
 		HelloWorld helloWorld = (HelloWorld) ac.getBean("helloWorld");
 		helloWorld.sayHello();
 

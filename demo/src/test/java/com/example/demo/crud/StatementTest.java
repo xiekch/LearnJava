@@ -18,7 +18,7 @@ public class StatementTest {
     private Connection connection;
 
     {
-        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("beansFactory.xml");
+        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("bean/beansFactory.xml");
         this.connection = (Connection) ac.getBean("connection");
         ac.close();
     }
@@ -31,7 +31,7 @@ public class StatementTest {
         Scanner scanner = new Scanner(System.in);
         System.out.println("input your name");
         // String name = scanner.nextLine();
-        String name = "AA";
+        String name = "Alice";
         System.out.println("input your password");
         // String password = scanner.nextLine();
         String password = "123456";
