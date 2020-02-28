@@ -16,15 +16,15 @@ public class NewInstanceTest {
         for (int i = 0; i < 10; i++) {
             int num = new java.util.Random().nextInt(3);
             switch (num) {
-            case 0:
-                cp = "java.util.Date";
-                break;
-            case 1:
-                cp = "java.util.Random";
-                break;
-            case 2:
-                cp = "java.lang.Object";
-                break;
+                case 0:
+                    cp = "java.util.Date";
+                    break;
+                case 1:
+                    cp = "java.util.Random";
+                    break;
+                case 2:
+                    cp = "java.lang.Object";
+                    break;
             }
             try {
                 newInstance(cp);

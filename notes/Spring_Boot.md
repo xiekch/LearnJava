@@ -70,3 +70,10 @@ public @interface SpringBootApplication
 
 the integrated solution of J2EE and autoconfig: `spring-boot-autoconfigure-2.2.3.RELEASE.jar` 
 
+
+
+## Annotations
+
+Spring boot advocates annotations rather than configuration files
+
+@Configuration instead of @**ImportResource**
