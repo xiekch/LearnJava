@@ -47,10 +47,11 @@ public class AnnotationConfigTest {
 
     @Test
     public void TestAutowired() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AnnotationConfig.class);
         AnnotationConfigTest bean = ac.getBean(AnnotationConfigTest.class);
         System.out.println(bean);
         System.out.println(this);
+        ac.close();
     }
 
     @Test
